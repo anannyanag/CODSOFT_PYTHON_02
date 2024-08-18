@@ -1,0 +1,28 @@
+# CODSOFT_PYTHON_02
+import random
+import string
+
+def generate_password(length):
+    characters = string.ascii_letters + string.digits + string.punctuation
+    password = ''.join(random.choice(characters) for i in range(length))
+    return password
+def prompt_user_for_length():
+    while True:
+        try:
+            length = int(input("Enter the desired length of the password: "))
+            if length <= 0:
+                print("Please enter a positive integer.")
+                continue
+            return length
+        except ValueError:
+            print("Please enter a valid number.")
+def display_password(password):
+    print(f"Generated Password: {password}")
+
+def main():
+    length = prompt_user_for_length()
+    password = generate_password(length)
+    display_password(password)
+
+if __name__ == "__main__":
+    main()
